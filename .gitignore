@@ -10,3 +10,6 @@
 
 # Compiled source #
 *.class
+target/
+build/
+
