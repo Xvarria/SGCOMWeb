@@ -10,7 +10,10 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
         
-	<context:component-scan base-package="com.sgcom.web.controller" />
+    <!-- Scan for controller on the base-package, only scan for controller annotation -->    
+	<context:component-scan base-package="com.sgcom.web">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
  
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

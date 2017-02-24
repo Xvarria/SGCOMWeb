@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.sgcom.web.config" })
-@PropertySource(value = { "classpath:application.properties" })
+@ComponentScan(basePackages = "com.sgcom.web")
+@PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfiguration {
  
     @Autowired

@@ -1,4 +1,4 @@
-package com.sgcom.web.DAO;
+package com.sgcom.web.dao;
 
 import java.util.Collection;
 
