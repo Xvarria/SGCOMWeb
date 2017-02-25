@@ -4,11 +4,13 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sgcom.web.dao.CategoriaDAO;
 import com.sgcom.web.model.Categoria;
 import com.sgcom.web.service.CategoriaBO;
 
+@Transactional
 @Service
 public class CategoriaBOImpl implements CategoriaBO {
 
@@ -39,5 +41,4 @@ public class CategoriaBOImpl implements CategoriaBO {
 	public Collection<Categoria> listCategorias() {
 		return this.categoriaDAO.listCategorias();
 	}
-
 }

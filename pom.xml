@@ -9,15 +9,16 @@
 	<description>SGCom Aplicacion WEB</description>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-
+        <testSourceDirectory>test</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>resources</directory>
 				<filtering>true</filtering>
-			</resource>
+			</resource>		
 		</resources>
 
 		<plugins>
+			<!-- Maven compiler -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
@@ -26,6 +27,8 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Plugin for WAR generation -->
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
@@ -33,7 +36,8 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
-			<!-- Tomcat plugin -->
+			
+			<!-- Plugin in to Deploy on Tomcat -->
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
@@ -45,7 +49,21 @@
 					<username>admin</username>
 					<password>admin</password>
 				</configuration>
-			</plugin>		
+			</plugin>
+			
+			<!-- Test integration plugin -->
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.17</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.17</version>
+					</dependency>
+				</dependencies>
+			</plugin>			
+					
 		</plugins>
 	</build>
 	<dependencies>
@@ -74,6 +92,13 @@
             <artifactId>spring-orm</artifactId>
             <version>4.3.6.RELEASE</version>
         </dependency>
+        
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>4.3.6.RELEASE</version>
+		</dependency>        
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -86,13 +111,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.2.7.Final</version>
+			<version>4.3.6.Final</version>
 		</dependency>
 	
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.2.7.Final</version>
+			<version>4.3.6.Final</version>
 		</dependency>
 
         <!-- MySQL -->
@@ -102,7 +127,20 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>6.0.5</version>
 		</dependency>
-
-
+		
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		</dependency>
+							
 	</dependencies>
 </project>
