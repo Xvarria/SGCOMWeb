@@ -3,64 +3,47 @@
 <head>
 
 <!-- JQUERY -->
-<script type="text/javascript" src="../js/commons/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="./js/commons/jquery-3.1.1.js"></script>
 
 <!-- BOOTSTRAP -->
-<script type="text/javascript" src= "../js/commons/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src= "./js/commons/bootstrap/bootstrap.min.js"></script>
 		
 <!-- DATATABLES -->		
-<script type="text/javascript" src="../js/commons/datatables/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/commons/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../js/commons/datatables/jquery.dataTables.columnFilter.js"></script>
-<script type="text/javascript" src="../js/commons/datatables/jquery.dataTables.colReorder.min.js"></script>
+<script type="text/javascript" src="./js/commons/datatables/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/commons/datatables/jquery.dataTables.min.js"></script>
 
 <!-- <script type="text/javascript" src="../js/commons/datatables/dataTables.tableTools.js"></script>  -->
 
-<!--  local js -->
+<!--  LOCAC - JS -->
 <!-- <script type="text/javascript" src="../js/general.js"></script> -->
-<!-- <script type="text/javascript" src="../js/familyPageMgr.js"></script> -->
 
 <!-- CSS - GENERAL -->
 
 
 <!-- CSS - BOOTSTRAP -->
-<link rel="stylesheet" href="../css/commons/bootstrap/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/commons/bootstrap/jumbotron.css" />
+<link rel="stylesheet" href="./css/commons/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="./css/commons/bootstrap/jumbotron.css" />
 
 
 <!-- CSS - DATATABLES -->
-<link rel="stylesheet" href="../css/commons/datatables/jquery.dataTables.css" />
-<link rel="stylesheet" href="../css/commons/datatables/jquery.dataTables_themeroller.css" />
-<link rel="stylesheet" href="../css/commons/datatables/jquery.dataTables.colReorder.min.css" /> 
-<link rel="stylesheet" href="../css/commons/datatables/dataTables.tableTools.css" />
+<link rel="stylesheet" href="./css/commons/datatables/jquery.dataTables.css" />
+<link rel="stylesheet" href="./css/commons/datatables/jquery.dataTables_themeroller.css" />
 
 <!--===========================================================================
     END GLOBAL_INCLUDES FILE
 ============================================================================-->
-
-
-<title>Spring MVC Tutorial by Crunchify - Hello World Spring MVC
-	Example</title>
-<style type="text/css">
-body {
-	background-image: url('http://crunchify.com/bg.png');
-}
-</style>
 </head>
-<body>${message}
- 
-   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+	<body>
+    	<nav class="navbar navbar-inverse navbar-fixed-top">
+      		<div class="container">
+        	<div class="navbar-header">
+          	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            	<span class="sr-only">Toggle navigation</span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+          	</button>
+          	<a class="navbar-brand" href="#">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -88,6 +71,7 @@ body {
 			href='http://crunchify.com/category/spring-mvc/' target='_blank'>here</a>
 		for all Spring MVC, Web Development examples.
 		<br>
+		<p>${message}</p>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
       </div>
