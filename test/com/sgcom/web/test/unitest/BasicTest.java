@@ -10,21 +10,23 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.sgcom.web.model.Categoria;
 import com.sgcom.web.service.CategoriaBO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration("file:WebContent/WEB-INF/SGCom-servlet.xml")
 public class BasicTest {
 	
 	@Autowired
-	CategoriaBO categoriaBO;
+	private CategoriaBO categoriaBO;
 	
 	@Test
     public void tesMethod() {
 		try {
-			Collection<Categoria> listaCategorias = categoriaBO.listCategorias();
+			Collection<Categoria> listaCategorias = this.categoriaBO.listCategorias();
 			assertNotNull("Retorno de Categorias no NULO", listaCategorias);							
 		} catch (Exception e) {
 			System.err.println("Excepción durante Consulta de Categorias");
