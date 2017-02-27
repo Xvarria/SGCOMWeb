@@ -1,0 +1,15 @@
+# Eclipse Configuration Files #
+.settings/
+.springBeans
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Eclipse Core
+.project
+
+# Compiled source #
+*.class
+target/
+build/
+
