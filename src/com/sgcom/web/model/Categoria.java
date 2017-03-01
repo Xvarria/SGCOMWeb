@@ -17,6 +17,7 @@ public class Categoria {
 
 	private int categoriaId;
 	private String descripcion;
+	private String codigo;
 	private Collection<Subcategoria> subcategorias;
 	
 	@Id
@@ -39,6 +40,15 @@ public class Categoria {
 		this.descripcion = descripcion;
 	}
 	
+	@Column(name = "CODIGO")
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="categoria")  
 	public Collection<Subcategoria> getSubcategorias() {
 		return subcategorias;
