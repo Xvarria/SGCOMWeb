@@ -4,22 +4,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Categoria Listar</title>
+<%@ include file="./includes/basic.jsp"%>
+<script type="text/javascript" src="../js/categoria.js"></script>
 </head>
 <body>
-<table>
-		<tr>
-			<th>Id</th>
-			<th>Codigo</th>
-			<th>Descripcion</th>
-		</tr>
-	<c:forEach items="${lista}" var="cat">
-		<tr>
-			<td><c:out value="${cat.categoriaId}"/></td>
-			<td><c:out value="${cat.codigo}"/></td>
-			<td><c:out value="${cat.descripcion}"/></td>
-		</tr>
-	</c:forEach>
-</table>
+	<div class="container">TOP</div>
+	<div class="container">
+		Center
+		<div class="row">
+			<div class="col-md-10 offset-md-4">
+				<table id="CategoriaTable">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Codigo</th>
+							<th>Descripcion</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<div class="container">Bottom</div>
 </body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+    		initDatatableOnList();
+		});
+	</script>
 </html>
