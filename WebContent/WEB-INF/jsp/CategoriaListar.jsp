@@ -13,7 +13,7 @@
 	<div class="container">
 		Center
 		<div class="row">
-			<div class="col-md-10 offset-md-4">
+			<div class="col-md-10 offset-md-1">
 				<table id="CategoriaTable">
 					<thead>
 						<tr>

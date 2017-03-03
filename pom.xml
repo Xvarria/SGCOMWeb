@@ -148,7 +148,12 @@
 		    <version>2.8.7</version>
 		</dependency>
 				
-
+		<!-- https://mvnrepository.com/artifact/org.directwebremoting/dwr -->
+		<dependency>
+		    <groupId>org.directwebremoting</groupId>
+		    <artifactId>dwr</artifactId>
+		    <version>3.0.2-RELEASE</version>
+		</dependency>
 
 		<!-- scope test -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->

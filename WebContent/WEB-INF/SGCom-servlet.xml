@@ -2,13 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"	
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.directwebremoting.org/schema/spring-dwr
+        http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
         
     <!-- Scan for controller on the base-package, only scan for controller annotation -->    
 	<context:component-scan base-package="com.sgcom.web">
@@ -20,5 +23,18 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<!--DWR -->
+	<dwr:configuration />
+	<dwr:annotation-config />
+	<dwr:annotation-scan />
+	<dwr:url-mapping />
+	<dwr:controller id="dwrController" debug="true" />
+	<dwr:configuration>
+		<dwr:convert type="bean" class="com.sgcom.web.model.Categoria"></dwr:convert>
+		<dwr:convert type="bean" class="com.sgcom.web.model.SubCategoria"></dwr:convert>		
+		<dwr:convert type="bean" class="java.lang.Exception"></dwr:convert>
+		<dwr:convert type="bean" class="java.lang.StackTraceElement"></dwr:convert>
+	</dwr:configuration> 
 
 </beans>
