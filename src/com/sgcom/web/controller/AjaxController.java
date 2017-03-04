@@ -22,7 +22,7 @@ public class AjaxController {
 	final static Logger log = Logger.getLogger(CategoriaController.class);
 	
 	@RequestMapping("/ajaxGetCagetorias")
-	public @ResponseBody String ajaxGetCagetorias(){
+	public @ResponseBody String ajaxGetCagetorias() throws Exception{
 		log.info("Llamado asincrónico para obtener Categorias");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -30,8 +30,8 @@ public class AjaxController {
 			return mapper.writeValueAsString(categorias);
 		} catch (JsonProcessingException e) {
 			log.info("Error en llamado asincrónico para obtener Categorias", e);
+			throw e;
 		}
-		return "";
 	}
 
 }

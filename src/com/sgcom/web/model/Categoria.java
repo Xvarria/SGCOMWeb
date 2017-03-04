@@ -1,6 +1,5 @@
 package com.sgcom.web.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -12,8 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CATEGORIA")
@@ -22,8 +20,6 @@ public class Categoria {
 	private int categoriaId;
 	private String descripcion;
 	private String codigo;
-	
-	@JsonInclude(Include.NON_NULL)
 	private Collection<Subcategoria> subcategorias;
 	
 	@Id
@@ -55,16 +51,9 @@ public class Categoria {
 		this.codigo = codigo;
 	}
 
-	
-	//TODO probar el parche
-	//TODO probar la anotación
-	//TODO dejar solo una solución...
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="categoria")  
-	@JsonInclude(JsonInclude.Include.NON_NULL)
 	public Collection<Subcategoria> getSubcategorias() {
-		if (subcategorias == null){
-			return new ArrayList<Subcategoria>();
-		}
 		return subcategorias;
 	}
 	

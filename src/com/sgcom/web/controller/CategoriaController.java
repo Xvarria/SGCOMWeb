@@ -12,7 +12,7 @@ public class CategoriaController {
 	
 	@RequestMapping("/categoria/listar")
 	public ModelAndView listarCategorias(){
-		String successView = "CategoriaListar";
+		String successView = "categoriaListar";
 		return new ModelAndView(successView) ;
 	}
 	

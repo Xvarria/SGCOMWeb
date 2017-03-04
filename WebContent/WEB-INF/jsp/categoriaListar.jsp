@@ -9,7 +9,10 @@
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
 <body>
-	<div class="container">TOP</div>
+	<%@ include file="./includes/standardHiddenFields.jsp"%>
+	<div class="container">
+		<p>The context path is: ${pageContext.request.contextPath}.</p>
+	</div>
 	<div class="container">
 		Center
 		<div class="row">
@@ -20,6 +23,9 @@
 							<th>Id</th>
 							<th>Codigo</th>
 							<th>Descripcion</th>
+							<th>Detalle</th>
+							<th>Eliminar</th>
+							<th>Modificar</th>
 						</tr>
 					</thead>
 					<tbody>

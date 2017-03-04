@@ -1,0 +1,1 @@
+<input id="contextPath" value="${pageContext.request.contextPath}"/>

@@ -12,8 +12,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SGCom</servlet-name>
-        <url-pattern>/welcome.jsp</url-pattern>
-        <url-pattern>/welcome.html</url-pattern>
-        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 </web-app>

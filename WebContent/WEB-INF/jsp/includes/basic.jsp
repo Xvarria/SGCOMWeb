@@ -16,7 +16,7 @@
 <script type="text/javascript" src="../js/commons/peace.min.js"></script>
 
 <!--  LOCAL - JS -->
-<script type="text/javascript" src="../js/SGCom.js"></script>
+<script type="text/javascript" src="../js/sgcom.js"></script>
 
 <!-- CSS - GENERAL -->
 
