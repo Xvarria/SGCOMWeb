@@ -1,5 +1,6 @@
 package com.sgcom.web.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,15 @@ public class Categoria {
 	private String descripcion;
 	private String codigo;
 	private Collection<Subcategoria> subcategorias;
-	
+		
+	public Categoria() {
+		super();
+		this.categoriaId = 0;
+		this.descripcion = "";
+		this.codigo = "";
+		this.subcategorias = new ArrayList<Subcategoria>();
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "CATEGORIA_ID")

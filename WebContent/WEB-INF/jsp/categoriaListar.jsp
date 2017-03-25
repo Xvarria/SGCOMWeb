@@ -9,27 +9,35 @@
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
 <body>
-	<%@ include file="./includes/standardHiddenFields.jsp"%>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<table id="CategoriaTable">
-					<thead>
-						<tr>
-							<th><fmt:message key="campo.id"/></th>
-							<th><fmt:message key="campo.codigo"/></th>
-							<th><fmt:message key="campo.desc.categoria"/></th>
-							<th><fmt:message key="encabezado.detalle"/></th>
-							<th><fmt:message key="encabezado.editar"/></th>
-							<th><fmt:message key="encabezado.eliminar"/></th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
+	<form id="categoriaListar">
+		<%@ include file="./includes/standardHiddenFields.jsp"%>
+		<div class="container">
+			<div class="row upperSpace">
+				<div class="col-md-10 offset-md-1">
+					<fmt:message key="btn.agregar.categoria" var="btnLabel"/>
+					<input type="button" value="${btnLabel}" onclick="agregarCategoria();"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<table id="CategoriaTable">
+						<thead>
+							<tr>
+								<th><fmt:message key="campo.id"/></th>
+								<th><fmt:message key="campo.codigo"/></th>
+								<th><fmt:message key="campo.desc.categoria"/></th>
+								<th><fmt:message key="encabezado.detalle"/></th>
+								<th><fmt:message key="encabezado.editar"/></th>
+								<th><fmt:message key="encabezado.eliminar"/></th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){

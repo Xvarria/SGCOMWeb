@@ -19,6 +19,7 @@
 <script type="text/javascript" src="../js/sgcom.js"></script>
 
 <!-- CSS - GENERAL -->
+<link rel="stylesheet" href="../css/commons/SGCom.css" />
 
 <!-- CSS - BOOTSTRAP -->
 <link rel="stylesheet" href="../css/commons/bootstrap/bootstrap.min.css" />

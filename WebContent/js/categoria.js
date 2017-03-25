@@ -74,3 +74,11 @@ function refreshCategoriaTable(data) {
 	}
 	console.log("FINISH refreshCategoriaTable");
 }
+
+function agregarCategoria(){
+	var form = $("#categoriaListar");
+	form.action = getOrigen() +'/categoria/agregar.do';
+	form.method = "GET";
+	form.submit();
+	console.log('sumbmting to: ' + form.action + ' method: ' + form.method);
+}
