@@ -9,13 +9,13 @@
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
 <body>
-	<form id="categoriaListar">
+	<form id="categoriaForm">
 		<%@ include file="./includes/standardHiddenFields.jsp"%>
 		<div class="container">
 			<div class="row upperSpace">
 				<div class="col-md-10 offset-md-1">
 					<fmt:message key="btn.agregar.categoria" var="btnLabel"/>
-					<input type="button" value="${btnLabel}" onclick="agregarCategoria();"/>
+					<input type="button" value="${btnLabel}" onclick='agregarCategoria("GET");'/>
 				</div>
 			</div>
 			<div class="row">

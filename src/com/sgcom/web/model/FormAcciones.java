@@ -16,4 +16,14 @@ public enum FormAcciones {
 		return this.desc;
 	}
 	
+	public static FormAcciones getAccion(String desc){
+		if (desc != null) {
+			for (FormAcciones accion : FormAcciones.values()) {
+				if (desc.equals(accion.getDesc())) {
+					return accion;
+				}
+			}
+		}
+		return null;
+	}
 }

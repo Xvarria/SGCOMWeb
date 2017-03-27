@@ -32,7 +32,7 @@ public class Categoria {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CATEGORIA_ID")
 	public int getCategoriaId() {
 		return categoriaId;

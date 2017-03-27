@@ -25,8 +25,8 @@
 <link rel="stylesheet" href="../css/commons/bootstrap/bootstrap.min.css" />
 
 <!-- CSS - DATATABLES -->
-<!-- <link rel="stylesheet" href="../css/commons/datatables/dataTables.bootstrap4.min.css" /> -->
-<link rel="stylesheet" href="../css/commons/datatables/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="../css/commons/datatables/dataTables.bootstrap4.min.css" />
+<link rel="stylesheet" href="../css/commons/datatables/datatables.min.css" />
 
 <!-- CSS - PEACE -->
 <link rel="stylesheet" href="../css/commons/peace-theme-loading.css" />

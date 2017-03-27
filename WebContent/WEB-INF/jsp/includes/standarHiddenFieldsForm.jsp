@@ -1,1 +1,1 @@
-<input id="form.accion" value="${form.accion}"/>
+<input id="accion"  name="accion" value="${form.accion}"/>
