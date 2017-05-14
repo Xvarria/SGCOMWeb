@@ -41,21 +41,21 @@ function refreshCategoriaTable(data) {
 				className : 'center',
 				orderable : 'false',
 				render : function(data, type, full, meta) {
-					return '<a href="' + getOrigen() +'/categoria/detalleCategoria.do?cateforia='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/magnifier.png" width="20" height="20"> </a>';
+					return '<a href="' + getOrigen() +'/categoria/mostrar.do?categoriaId='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/magnifier.png" width="20" height="20"> </a>';
 				}
 			}, {
 				targets : 4,
 				className : 'center',
 				orderable : 'false',
 				render : function(data, type, full, meta) {
-					return '<a href="' + getOrigen() +'/categoria/modificarCategoria.do?cateforia='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/page_edit.png" width="20" height="20"> </a>';
+					return '<a href="' + getOrigen() +'/categoria/actualizar.do?categoriaId='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/page_edit.png" width="20" height="20"> </a>';
 				}
 			},{
 				targets : 5,
 				className : 'center',
 				orderable : 'false',
 				render : function(data, type, full, meta) {
-					return '<a href="' + getOrigen() +'/categoria/eliminarCategoria.do?cateforia='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/cross.png" width="20" height="20"> </a>';
+					return '<a href="' + getOrigen() +'/categoria/eliminar.do?categoriaId='+ full.categoriaId + '"><img border="0" alt="Detalle" src="../images/cross.png" width="20" height="20"> </a>';
 				}
 			}],
 			language: {emptyTable: 'Categorias no encontradas'},
@@ -82,4 +82,34 @@ function agregarCategoria(method){
 	form.prop('method', method);
 	console.log('sumbmting to: ' + action + ' method: ' + method);	
 	form.submit();
+}
+
+
+function esconderCampos(){
+	var accionActual = $("#accion").val();
+	var accionAgregar = $("#accionAgregar").val();
+	var accionMostrar = $("#accionMostrar").val();
+	var accionActualizar = $("#accionActualizar").val();
+	
+	var esAgregar = accionActual == accionAgregar;
+	var esMostrar = accionActual == accionMostrar;
+	var esActualizar = accionActual == accionActualizar;
+	
+	$("#categoriaId").prop("readonly","true");	
+	if (esAgregar){
+		//Esconde el Id
+		$("#categoriaId").attr("hidden");
+		//muestra el botón de agergar
+		$("#agregar").switchClass("intHiddenBtn", "visibleBtn");
+		$("#cancelar").switchClass("intHiddenBtn", "visibleBtn");		
+	}
+	if (esMostrar){
+		$("#codigo").prop("readonly","true");
+		$("#descripcion").prop("readonly","true");
+		$("#atras").switchClass("intHiddenBtn", "visibleBtn");
+	}
+	if (esActualizar){
+		$("#actualizar").switchClass("intHiddenBtn", "visibleBtn");
+		$("#cancelar").switchClass("intHiddenBtn", "visibleBtn");
+	}
 }

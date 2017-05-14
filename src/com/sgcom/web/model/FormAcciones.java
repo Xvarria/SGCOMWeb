@@ -4,7 +4,8 @@ public enum FormAcciones {
 	LISTAR("LISTAR"),
 	AGREGAR("AGREGAR"),
 	ACTUALIZAR("ACTUALIZAR"),
-	ELIMINAR("ELIMIONAR");
+	ELIMINAR("ELIMINAR"),
+	MOSTRAR("MOSTRAR");
 	
 	public String desc;
 	

@@ -16,6 +16,7 @@ public class CategoriaForm extends BaseFormInfo{
 	}
 
 	public CategoriaForm(FormAcciones accion, Categoria categoria) {
+		super();
 		this.setAccion(accion.getDesc());
 		this.categoriaId = String.valueOf(categoria.getCategoriaId());
 		this.codigo = categoria.getCodigo();

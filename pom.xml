@@ -154,6 +154,13 @@
 		    <artifactId>dwr</artifactId>
 		    <version>3.0.2-RELEASE</version>
 		</dependency>
+		
+		<!-- Provides a servlet api on MAVEN test for JUNIT also required for compiling-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>	
 
 		<!-- scope test -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -161,14 +168,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- Provides a servlet api on MAVEN test for JUNIT -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
 			<scope>test</scope>
 		</dependency>
 		

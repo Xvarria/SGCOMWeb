@@ -4,6 +4,7 @@
 
 <!-- JQUERY -->
 <script type="text/javascript" src="../js/commons/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../js/commons/jquery-ui.min.js"></script>
 
 <!-- BOOTSTRAP -->
 <script type="text/javascript" src= "../js/commons/bootstrap/tether.min.js"></script>
@@ -20,6 +21,7 @@
 
 <!-- CSS - GENERAL -->
 <link rel="stylesheet" href="../css/commons/SGCom.css" />
+<link rel="stylesheet" href="../css/commons/jquery-ui.min.css" />
 
 <!-- CSS - BOOTSTRAP -->
 <link rel="stylesheet" href="../css/commons/bootstrap/bootstrap.min.css" />

@@ -1,5 +1,7 @@
 package com.sgcom.web.controller;
 
+import static com.sgcom.web.model.SGComConstansts.ERROR_CATEGORIA_PARAMETRO_INVALIDO;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,18 +12,25 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sgcom.web.form.CategoriaForm;
 import com.sgcom.web.model.Categoria;
 import com.sgcom.web.model.FormAcciones;
+import com.sgcom.web.model.exception.ParametroIncorrectoException;
 import com.sgcom.web.service.CategoriaBO;
+import com.sgcom.web.service.impl.UtilBO;
 import com.sgcom.web.validator.CategoriaValidator;
 
 @Controller
 public class CategoriaController {
 	
 	final static Logger log = Logger.getLogger(CategoriaController.class);
+	final static String FORM_VIEW = "categoriaForm";
+	final static String ERROR_VIEW = "error";//TODO add this jsp
+	final static String LISTAR_VIEW = "categoriaListar";
+	
 	
 	@Autowired
 	private CategoriaValidator categoriaValidator;
@@ -31,75 +40,52 @@ public class CategoriaController {
 	
 	@RequestMapping("/categoria/listar")
 	public ModelAndView listarCategoria(){
-		String successView = "categoriaListar";
-		return new ModelAndView(successView) ;
+		return new ModelAndView(LISTAR_VIEW) ;
 	}
 	
 	@RequestMapping(value = "/categoria/agregar", method = RequestMethod.GET)
 	public ModelAndView agregarCategoriaGet(){
 		CategoriaForm form = new CategoriaForm(FormAcciones.AGREGAR, new Categoria());
-		String successView = "categoriaForm";
-		return new ModelAndView(successView, "form", form) ;
+		return new ModelAndView(FORM_VIEW, "form", form) ;
 	}
 	
 	@RequestMapping(value = "/categoria/agregar", method = RequestMethod.POST)
 	public String agregarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
 		//String successView = this.procesarAccion(command, result);
-		String successView = "categoriaForm";
 		this.categoriaValidator.validate(form, result); //validates the form
 		if (!result.hasErrors()) {
 			try {
 				Categoria categoria = form.getCategoriaDelForm();
 				this.categoriaBO.save(categoria);
 			} catch (Exception e) {
-				log.error("Error al registrar en la base datos");
+				log.error("Error al registrar en la base datos", e);
 			}	
 		}
-
-		return successView;
-	}		
-
-/*
-	private String procesarAccion(CategoriaForm command, BindingResult result) {
-		boolean errorOnPost=false;
-		String nextView = "NEXT VIEW"; //TODO agregar next view
-		//String message = "";
-		//Limpar mensajes de command
-		//command.getMessageAndRedirect().cleanMsgValue(); //Cleans message and redirect info
-		//Agregar opciones de dropDown, esto se puede hace desde otro método
-		this.categoriavalidator.validate(command, result); //validates the form
-		if (result.hasErrors()) {
-			errorOnPost = true;
-		} else {
-			//String logEntryOnError = "";
-			//String errorPropertyKey = "";
-			//String successPropertyKey = "";
-			FormAcciones accion = FormAcciones.getAccion(command.getAccion());
-			try {				
-				switch (accion){
-				case AGREGAR:
-					Categoria categoria = new Categoria();
-					this.categoriaBO.save(categoria);
-					break;
-				default:
-					break;
-				}
-			}catch(Exception e){
-				//log.error(logEntryOnError, e);
-				errorOnPost = true;
-				//this.familyPagesFormValidator.setErrorAtException(result, errorPropertyKey);//TODO crear método con error de validacion genérico
-			}
-
-			if (!errorOnPost){
-				//message = this.propertyMessageService.getMessageFromProperties(successPropertyKey);
-				//command.getMessageAndRedirect().setSuccessMessage(message);//Set success message
-				//if (actionType == Actions.ACTION_CREATE){
-				//	command.setFamilyPage(new FamilyPage());
-				//}
-			}			
-		}			
-		return nextView;
+		return FORM_VIEW;
 	}
-*/	
 	
+	@RequestMapping(value = "/categoria/mostrar", method = RequestMethod.GET)
+	public ModelAndView mostarCategoriaGet(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
+		return getFormCargado(categoriaIdStr, FormAcciones.MOSTRAR);	
+	}
+	
+	@RequestMapping(value = "/categoria/actualizar", method = RequestMethod.GET)
+	public ModelAndView actualizarCategoriaGet(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
+		return getFormCargado(categoriaIdStr, FormAcciones.ACTUALIZAR);	
+	}
+	
+	private ModelAndView getFormCargado(String categoriaIdStr, FormAcciones accion) {
+		String mensajeError = "";
+		try {
+			int categoriaId = UtilBO.getIntParametro(categoriaIdStr);
+			Categoria categoria = this.categoriaBO.getCategoriaById(categoriaId);
+			CategoriaForm form = new CategoriaForm(accion, categoria);
+			return new ModelAndView(FORM_VIEW, "form", form) ;
+		} catch (ParametroIncorrectoException e) {
+			mensajeError = "Parametro invalido para Categoria Id = " + categoriaIdStr;
+			log.error(mensajeError, e);
+			//define error message
+		}
+		return new ModelAndView(ERROR_VIEW, "mensajeError", ERROR_CATEGORIA_PARAMETRO_INVALIDO) ;
+	}
 }

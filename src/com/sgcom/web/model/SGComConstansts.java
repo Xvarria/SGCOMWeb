@@ -12,6 +12,8 @@ public final class SGComConstansts {
 	
 	public final static String ERROR_CATEGORIA_VAICA = "error.categoria.descripcion.vacio";
 
+	public final static String ERROR_CATEGORIA_PARAMETRO_INVALIDO = "error.categoria.paramentro.invalido";
+	
 	// Costructor privado para evitar instanciamiento
 	private SGComConstansts() {
 	}

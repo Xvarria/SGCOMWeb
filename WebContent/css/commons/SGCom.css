@@ -11,3 +11,15 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.intHiddenBtn{
+	display: none 
+}
+
+.visibleBtn{
+	display: inline;
+}
+
+input[readonly]{
+    background-color:#D6D8DD;
+}
