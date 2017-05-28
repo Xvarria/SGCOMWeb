@@ -8,6 +8,10 @@ public class BaseFormInfo {
 	private final String accionEliminar = FormAcciones.ELIMINAR.getDesc();
 	private final String accionMostrar = FormAcciones.MOSTRAR.getDesc();
 	private final String accionListar = FormAcciones.LISTAR.getDesc();
+	private String mensaje = "";
+	private ElementoLink opcion1 = new ElementoLink("", ""); //TODO add new empty cunstructor
+	private ElementoLink opcion2 = new ElementoLink("", "");
+	
 	
 	private String accion;
 	
@@ -21,6 +25,30 @@ public class BaseFormInfo {
 
 	public void setAccion(String accion) {
 		this.accion = accion;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public ElementoLink getOpcion1() {
+		return opcion1;
+	}
+
+	public void setOpcion1(ElementoLink opcion1) {
+		this.opcion1 = opcion1;
+	}
+
+	public ElementoLink getOpcion2() {
+		return opcion2;
+	}
+
+	public void setOpcion2(ElementoLink opcion2) {
+		this.opcion2 = opcion2;
 	}
 
 	//Metodos de para propiedades de solo lectura
@@ -43,4 +71,6 @@ public class BaseFormInfo {
 	public String getAccionListar() {
 		return accionListar;
 	}
+	
+	
 }

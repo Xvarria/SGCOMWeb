@@ -32,3 +32,34 @@ function mostrarErrores(){
 		}
 	}
 }
+
+//TODO Probablemente requira un parametroParaIndicar el tipo de formulario
+function mostrarMensajesOk(){
+	var mensaje = $("#mensaje").val();
+	if (!(mensaje === '')){
+		var AlertMsg = mensaje + '\n';
+		var opcion1Etiqueta = $("input[name='opcion1.etiqueta']").val();
+		var opcion1Url = $("input[name='opcion1.url']").val();
+		var opcion2Etiqueta = $("input[name='opcion2.etiqueta']").val();
+		var opcion2Url = $("input[name='opcion2.url']").val();
+		mensaje = mensaje + opcion1Etiqueta + ' -> ' + opcion1Url + '\n' + + opcion2Etiqueta + ' -> ' + opcion2Url
+		accepted = window.confirm(mensaje);
+		var accionUrl = ''
+		if (accepted) {
+	    	accionUrl = getOrigen() +opcion1Url;
+	    }else{
+	    	accionUrl = getOrigen() +opcion2Url;
+	    }
+	    var method = 'GET';
+	    var form = $("#categoriaForm");
+		form.prop('action', accionUrl);
+		form.prop('method', method);
+		console.log('Invocando accion: ' + accionUrl + ' metodo: ' + method);	
+		form.submit();
+	}
+}
+
+function mostrarMensajes(){
+	mostrarErrores();
+	mostrarMensajesOk();
+}

@@ -15,7 +15,7 @@
 			<div class="row upperSpace">
 				<div class="col-md-10 offset-md-1">
 					<fmt:message key="btn.agregar.categoria" var="btnLabel"/>
-					<input type="button" value="${btnLabel}" onclick='agregarCategoria("GET");'/>
+					<input type="button" value="${btnLabel}" onclick='accionMetodo("GET");'/>
 				</div>
 			</div>
 			<div class="row">

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sgcom.web.form.CategoriaForm;
+import com.sgcom.web.form.ElementoLink;
 import com.sgcom.web.model.Categoria;
 import com.sgcom.web.model.FormAcciones;
 import com.sgcom.web.model.exception.ParametroIncorrectoException;
@@ -50,18 +51,23 @@ public class CategoriaController {
 	}
 	
 	@RequestMapping(value = "/categoria/agregar", method = RequestMethod.POST)
-	public String agregarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
+	public ModelAndView agregarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
 		//String successView = this.procesarAccion(command, result);
 		this.categoriaValidator.validate(form, result); //validates the form
 		if (!result.hasErrors()) {
 			try {
 				Categoria categoria = form.getCategoriaDelForm();
+				//TODO agregar validacion
 				this.categoriaBO.save(categoria);
+				//setea los valores de success message y las opciones respectivas
+				form.setOpcion1(new ElementoLink("Agregar Otra Categoria","/categoria/agregar.do"));
+				form.setOpcion2(new ElementoLink("Regresar","/categoria/listar.do"));
+				form.setMensaje("Categoria Agregada exitosamente");
 			} catch (Exception e) {
 				log.error("Error al registrar en la base datos", e);
 			}	
 		}
-		return FORM_VIEW;
+		return new ModelAndView(FORM_VIEW, "form", form);
 	}
 	
 	@RequestMapping(value = "/categoria/mostrar", method = RequestMethod.GET)
@@ -73,6 +79,22 @@ public class CategoriaController {
 	public ModelAndView actualizarCategoriaGet(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
 		return getFormCargado(categoriaIdStr, FormAcciones.ACTUALIZAR);	
 	}
+	
+	//TODO extaer metodo del post y usar la accion del from para determinar el metodo que se va a usar del service.
+	@RequestMapping(value = "/categoria/actualizar", method = RequestMethod.POST)
+	public String actualizarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
+		this.categoriaValidator.validate(form, result); //validates the form
+		if (!result.hasErrors()) {
+			try {
+				Categoria categoria = form.getCategoriaDelForm();
+				this.categoriaBO.update(categoria);
+			} catch (Exception e) {
+				log.error("Error al registrar en la base datos", e);
+			}	
+		}
+		return FORM_VIEW;
+	}
+	
 	
 	private ModelAndView getFormCargado(String categoriaIdStr, FormAcciones accion) {
 		String mensajeError = "";

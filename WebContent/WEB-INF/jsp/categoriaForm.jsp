@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;">
-<title>Categoria Agregar</title>
+<title>Fromulatio de Categoria</title><!-- Todo agregar selctor din[amico de titulo -->
 <%@ include file="./includes/basic.jsp"%>
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
@@ -36,6 +36,14 @@
 				</c:if>
 			</spring:bind>	
 		</div>
+		
+		<div id="mensajes">
+			<input id="mensaje" name="mensaje" value="${form.mensaje}" />
+			<input id="opcion1.etiqueta" name="opcion1.etiqueta" value="${form.opcion1.etiqueta}" />
+			<input id="opcion1.url" name="opcion1.url" value="${form.opcion1.url}" />
+			<input id="opcion2.etiqueta" name="opcion2.etiqueta" value="${form.opcion2.etiqueta}" />
+			<input id="opcion2.url" name="opcion2.url" value="${form.opcion2.url}" />
+		</div>
 		<!-- END ERROR DISPLAY -->		
 		
 		<div class="container">
@@ -56,8 +64,8 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10 offset-md-1">
-					<input id="agregar" type="button" class="intHiddenBtn" value="${btnAgregar}" onclick='agregarCategoria("POST");'/> 
-					<input id="actualizar" type="button" class="intHiddenBtn" value="${btnActualizar}" onclick='actualizarCategoria("POST");'/> 
+					<input id="agregar" type="button" class="intHiddenBtn" value="${btnAgregar}" onclick='accionMetodo("POST");'/> 
+					<input id="actualizar" type="button" class="intHiddenBtn" value="${btnActualizar}" onclick='accionMetodo("POST");'/> 
 					<input id="cancelar" type="button" class="intHiddenBtn" value="${btnCancelar}" onclick="javascript:cancelar();"/>
 					<input id="atras" type="button" class="intHiddenBtn" value="${btnAtras}" onclick=""/>
 				</div>
@@ -67,9 +75,8 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		mostrarErrores();
+		mostrarMensajes();
 		esconderCampos();
-		activarCampos();
 	});
 </script>
 </html>
