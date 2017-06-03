@@ -57,11 +57,10 @@ public class CategoriaController {
 		if (!result.hasErrors()) {
 			try {
 				Categoria categoria = form.getCategoriaDelForm();
-				//TODO agregar validacion
 				this.categoriaBO.save(categoria);
 				//setea los valores de success message y las opciones respectivas
-				form.setOpcion1(new ElementoLink("Agregar Otra Categoria","/categoria/agregar.do"));
-				form.setOpcion2(new ElementoLink("Regresar","/categoria/listar.do"));
+				form.setOpcion1(new ElementoLink("Agregar Otra Categoria","/categoria/agregar.do"));//TODO setear valores como costantes
+				form.setOpcion2(new ElementoLink("Regresar","/categoria/listar.do"));//TODO setear valores como costantes
 				form.setMensaje("Categoria Agregada exitosamente");
 			} catch (Exception e) {
 				log.error("Error al registrar en la base datos", e);
@@ -88,6 +87,10 @@ public class CategoriaController {
 			try {
 				Categoria categoria = form.getCategoriaDelForm();
 				this.categoriaBO.update(categoria);
+				//setea los valores de success message y las opciones respectivas
+				form.setOpcion1(new ElementoLink("Continuar la edicion",""));//TODO agregar tilde / caracteres
+				form.setOpcion2(new ElementoLink("Regresar","/categoria/listar.do")); //TODO setear valores como costantes
+				form.setMensaje("Categoria Agregada exitosamente");
 			} catch (Exception e) {
 				log.error("Error al registrar en la base datos", e);
 			}	

@@ -4,18 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Categoria Listar</title>
+<title>Categor&iacute;a Listar</title>
 <%@ include file="./includes/basic.jsp"%>
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
 <body>
-	<form id="categoriaForm">
+	<form id="categoriaForm" name="categoriaForm">
 		<%@ include file="./includes/standardHiddenFields.jsp"%>
 		<div class="container">
 			<div class="row upperSpace">
 				<div class="col-md-10 offset-md-1">
 					<fmt:message key="btn.agregar.categoria" var="btnLabel"/>
-					<input type="button" value="${btnLabel}" onclick='accionMetodo("GET");'/>
+					<input type="button" value="${btnLabel}" onclick='accionMetodo("agregar","GET");'/>
 				</div>
 			</div>
 			<div class="row">

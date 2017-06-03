@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;">
-<title>Fromulatio de Categoria</title><!-- Todo agregar selctor din[amico de titulo -->
+<title>Formulario de Categor&iacute;a</title><!-- Todo agregar selctor din[amico de titulo -->
 <%@ include file="./includes/basic.jsp"%>
 <script type="text/javascript" src="../js/categoria.js"></script>
 </head>
@@ -13,7 +13,7 @@
 	<fmt:message key="btn.cancelar" var="btnCancelar"/>
 	<fmt:message key="btn.atras" var="btnAtras"/>
 	
-	<form id="categoriaForm" commandName="form" action="./" method="POST">
+	<form id="categoriaForm" name="categoriaForm" commandName="form" action="./" method="POST">
 		<%@ include file="./includes/standardHiddenFields.jsp"%>
 		<%@ include file="./includes/standarHiddenFieldsForm.jsp"%>
 		
@@ -38,11 +38,11 @@
 		</div>
 		
 		<div id="mensajes">
-			<input id="mensaje" name="mensaje" value="${form.mensaje}" />
-			<input id="opcion1.etiqueta" name="opcion1.etiqueta" value="${form.opcion1.etiqueta}" />
-			<input id="opcion1.url" name="opcion1.url" value="${form.opcion1.url}" />
-			<input id="opcion2.etiqueta" name="opcion2.etiqueta" value="${form.opcion2.etiqueta}" />
-			<input id="opcion2.url" name="opcion2.url" value="${form.opcion2.url}" />
+			<input id="mensaje" name="mensaje" value="${form.mensaje}" type="hidden"/>
+			<input id="opcion1.etiqueta" name="opcion1.etiqueta" value="${form.opcion1.etiqueta}" type="hidden"/>
+			<input id="opcion1.url" name="opcion1.url" value="${form.opcion1.url}" type="hidden"/>
+			<input id="opcion2.etiqueta" name="opcion2.etiqueta" value="${form.opcion2.etiqueta}" type="hidden"/>
+			<input id="opcion2.url" name="opcion2.url" value="${form.opcion2.url}" type="hidden"/>
 		</div>
 		<!-- END ERROR DISPLAY -->		
 		
@@ -64,10 +64,10 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10 offset-md-1">
-					<input id="agregar" type="button" class="intHiddenBtn" value="${btnAgregar}" onclick='accionMetodo("POST");'/> 
-					<input id="actualizar" type="button" class="intHiddenBtn" value="${btnActualizar}" onclick='accionMetodo("POST");'/> 
-					<input id="cancelar" type="button" class="intHiddenBtn" value="${btnCancelar}" onclick="javascript:cancelar();"/>
-					<input id="atras" type="button" class="intHiddenBtn" value="${btnAtras}" onclick=""/>
+					<input id="agregar" type="button" class="intHiddenBtn" value="${btnAgregar}" onclick='accionMetodo("agregar","POST");'/> 
+					<input id="actualizar" type="button" class="intHiddenBtn" value="${btnActualizar}" onclick='accionMetodo("actualizar","POST");'/> 
+					<input id="cancelar" type="button" class="intHiddenBtn" value="${btnCancelar}" onclick='confirmarYVolvaerALista();'/>
+					<input id="atras" type="button" class="intHiddenBtn" value="${btnAtras}" onclick='volverALista();'/>
 				</div>
 			</div>			
 		</div>
@@ -75,8 +75,8 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		mostrarMensajes();
 		esconderCampos();
+		mostrarMensajes();
 	});
 </script>
 </html>

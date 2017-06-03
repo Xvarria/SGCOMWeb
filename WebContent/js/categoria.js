@@ -75,40 +75,6 @@ function refreshCategoriaTable(data) {
 	console.log("FINISH refreshCategoriaTable");
 }
 
-
-//TODO crear metodo accion categoria, basado en el 
-function accionMetodo(method){
-	//TODO usar form name para determinar el dominio
-	//TODO extraer metodo a JS general
-	//TODO importante si la accion no esta definida los valores de esAgregar esActualizar esMostrar se convierten en true, mejar esto
-	//TODO agregarParametro de Accion de maenra que se concatene para obtener el valor por ej. accion actualizar -> buscar por accion "accionActualizar"
-	var form = $("#categoriaForm");
-	var accionActual = $("#accion").val();
-	var accionAgregar = $("#accionAgregar").val();
-	var accionMostrar = $("#accionMostrar").val();
-	var accionActualizar = $("#accionActualizar").val();
-	
-	var esAgregar = accionActual == accionAgregar;
-	var esMostrar = accionActual == accionMostrar;
-	var esActualizar = accionActual == accionActualizar;
-	var accionDo = '';
-	
-	if (esAgregar || esActualizar){
-		accionDo = accionActual.toLowerCase() + '.do';	
-	}
-	
-	var accionUrl = getOrigen() +'/categoria/' + accionDo;
-	if (!(accionDo === '')){
-		form.prop('action', accionUrl);
-		form.prop('method', method);
-		console.log('Invocando accion: ' + accionUrl + ' metodo: ' + method);	
-		form.submit();
-	}else{
-		console.error('Error Invocando accion: ' + accionUrl + ' metodo: ' + method);	
-	}
-		
-}
-
 function esconderCampos(){
 	var accionActual = $("#accion").val();
 	var accionAgregar = $("#accionAgregar").val();

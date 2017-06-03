@@ -1,1 +1,1 @@
-<input id="contextPath" value="${pageContext.request.contextPath}"/>
+<input id="contextPath" value="${pageContext.request.contextPath}" type="hidden"/>
