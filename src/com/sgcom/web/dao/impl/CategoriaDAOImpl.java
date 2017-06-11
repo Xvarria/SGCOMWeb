@@ -3,66 +3,64 @@ package com.sgcom.web.dao.impl;
 import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.Criteria;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.springframework.stereotype.Repository;
 
 import com.sgcom.web.dao.AbstractDAO;
 import com.sgcom.web.dao.CategoriaDAO;
 import com.sgcom.web.model.Categoria;
+import com.sgcom.web.model.Categoria_;
 
 
 @Repository
 public class CategoriaDAOImpl extends AbstractDAO implements CategoriaDAO {
-
+	
 	@Override
 	public void save(Categoria categoria) {
-		persist(categoria);
+		super.save(categoria);
 	}
 
 	@Override
 	public void update(Categoria categoria) {
-		getSession().update(categoria);
+		super.update(categoria);
 	}
 
 	@Override
 	public void delete(Categoria categoria) {
-		getSession().delete(categoria);
+		super.delete(categoria);
 	}
 
-	@SuppressWarnings("unchecked")
+	//Importante en Hibernate 5 se requiere la dependencia para 
+	//hibernate-jpamodelgen y su respectivo plugin en el POM
+	//Para Eliminar errorer de IDE se requiere en las opciones de "Compiler" permitir 
+	//procesamiento de annotaciones y agregar la opcion target/metamodel
+	//https://docs.jboss.org/hibernate/orm/5.0/topical/html/metamodelgen/MetamodelGenerator.html
 	@Override
 	public Categoria getCategoriaById(int categoriaId) {
-       
-        Criteria criteria = getSession().createCriteria(Categoria.class);
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Categoria> criteria = builder.createQuery(Categoria.class);
+		Root<Categoria> root = criteria.from(Categoria.class);
+		criteria.select(root);
+		criteria.where(builder.equal(root.get(Categoria_.categoriaId), categoriaId));
 
-        //CriteriaBuilder builder = this.getSession().getCriteriaBuilder();
-		//CriteriaQuery<Categoria> criteriaQuery = builder.createQuery(Categoria.class);
-		//Root<Categoria> categoriaRoot = criteria.from(Categoria.class);
-		//criteriaQuery.select(categoriaRoot);
-		//criteriaQuery.where(builder.equal(categoriaRoot.get("categoriaId"),categoriaId));
-        //criteria.
-		List<Categoria> listaCategorias = (List<Categoria>)criteria.list();
+		List<Categoria> listaCategorias = entityManager.createQuery(criteria).getResultList();
 
 		Categoria categoria = null;
-		if (!listaCategorias.isEmpty()){
+		if (!listaCategorias.isEmpty()) {
 			categoria = listaCategorias.iterator().next();
 		}
 		return categoria;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Categoria> listCategorias() {
-        Criteria criteria = getSession().createCriteria(Categoria.class);
-        return (List<Categoria>)criteria.list();
-        //Get Criteria Builder
-        /*CriteriaBuilder builder = this.getSession().getCriteriaBuilder();
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Categoria> criteria = builder.createQuery(Categoria.class);
-		Root<Categoria> categoriaRoot = criteria.from(Categoria.class);
-		criteria.select(categoriaRoot);
-        //Use criteria to query with session to fetch all contacts
-        Collection<Categoria> listaCategorias = getSession().createQuery(criteria).getResultList();
-
-        return listaCategorias;*/
+		Root<Categoria> root = criteria.from(Categoria.class);
+		criteria.select(root);
+		return entityManager.createQuery(criteria).getResultList();		
 	}
 }

@@ -10,7 +10,7 @@ import com.sgcom.web.dao.CategoriaDAO;
 import com.sgcom.web.model.Categoria;
 import com.sgcom.web.service.CategoriaBO;
 
-@Transactional
+@Transactional("")
 @Service
 public class CategoriaBOImpl implements CategoriaBO {
 
