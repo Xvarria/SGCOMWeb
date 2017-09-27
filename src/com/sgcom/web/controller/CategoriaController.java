@@ -88,7 +88,7 @@ public class CategoriaController {
 				Categoria categoria = form.getCategoriaDelForm();
 				this.categoriaBO.update(categoria);
 				//setea los valores de success message y las opciones respectivas
-				form.setOpcion1(new ElementoLink("Continuar la edicion",""));//TODO agregar tilde / caracteres
+				form.setOpcion1(new ElementoLink("Continuar la edicion",""));//TODO setear valores desde mensajes
 				form.setOpcion2(new ElementoLink("Regresar","/categoria/listar.do")); //TODO setear valores como costantes
 				form.setMensaje("Categoria Agregada exitosamente");
 			} catch (Exception e) {
@@ -98,12 +98,24 @@ public class CategoriaController {
 		return FORM_VIEW;
 	}
 	
+	@RequestMapping(value = "/categoria/eliminar", method = RequestMethod.GET)
+	public ModelAndView eliminarCategoria (HttpServletRequest request, HttpServletResponse response,  @ModelAttribute("form") CategoriaForm form, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
+		String mensaje = "";
+		try {
+			Categoria categoriaAEliminar = this.getElementByParameter(categoriaIdStr);
+			this.categoriaBO.delete(categoriaAEliminar);
+			mensaje = "Categoria Eliminada correctamente";
+		} catch (ParametroIncorrectoException e) {
+			mensaje = "La categoria:" + categoriaIdStr + " no existe, o el parametro es incorrecto, favor verificar."; //TODO arreglar este mensaje
+		}
+		form.setMensaje(mensaje);
+		return new ModelAndView(LISTAR_VIEW, "form", form);
+	}
 	
 	private ModelAndView getFormCargado(String categoriaIdStr, FormAcciones accion) {
 		String mensajeError = "";
 		try {
-			int categoriaId = UtilBO.getIntParametro(categoriaIdStr);
-			Categoria categoria = this.categoriaBO.getCategoriaById(categoriaId);
+			Categoria categoria = getElementByParameter(categoriaIdStr);
 			CategoriaForm form = new CategoriaForm(accion, categoria);
 			return new ModelAndView(FORM_VIEW, "form", form) ;
 		} catch (ParametroIncorrectoException e) {
@@ -112,5 +124,11 @@ public class CategoriaController {
 			//define error message
 		}
 		return new ModelAndView(ERROR_VIEW, "mensajeError", ERROR_CATEGORIA_PARAMETRO_INVALIDO) ;
+	}
+
+	private Categoria getElementByParameter(String categoriaIdStr) throws ParametroIncorrectoException {
+		int categoriaId = UtilBO.getIntParametro(categoriaIdStr);
+		Categoria categoria = this.categoriaBO.getCategoriaById(categoriaId);
+		return categoria;
 	}
 }

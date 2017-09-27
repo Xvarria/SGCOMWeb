@@ -9,6 +9,12 @@ function initDatatableOnList(){
 			exceptionHandler
 		}
 	});
+
+	//mostrarMensajes();//TODO
+	var mensaje = $('#mensaje').val;
+	if (mensaje != ''){
+		alert(mensaje);
+	}
 }
 
 function exceptionHandler(){

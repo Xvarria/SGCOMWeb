@@ -17,7 +17,7 @@ public abstract class AbstractDAO {
     }
  
     protected void delete(Object entity) {
-    	this.entityManager.remove(entity);
+    	this.entityManager.remove(this.entityManager.contains(entity) ? entity : this.entityManager.merge(entity));
     }
     
     protected void update(Object entity) {

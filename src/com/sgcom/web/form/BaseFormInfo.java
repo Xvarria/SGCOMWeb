@@ -11,7 +11,8 @@ public class BaseFormInfo {
 	private String mensaje = "";
 	private ElementoLink opcion1 = new ElementoLink("", ""); //TODO add new empty cunstructor
 	private ElementoLink opcion2 = new ElementoLink("", "");
-	
+	//TODO agrera tipo de mensaje?
+	//TODO metodo para limpiar todo
 	
 	private String accion;
 	

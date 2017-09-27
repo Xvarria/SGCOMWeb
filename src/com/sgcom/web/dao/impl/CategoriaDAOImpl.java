@@ -30,6 +30,7 @@ public class CategoriaDAOImpl extends AbstractDAO implements CategoriaDAO {
 
 	@Override
 	public void delete(Categoria categoria) {
+		
 		super.delete(categoria);
 	}
 
