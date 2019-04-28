@@ -39,18 +39,18 @@ public class ArticuloController {
 	@Autowired
 	private CategoriaBO categoriaBO;
 	
-	@RequestMapping("/categoria/listar")
+	@RequestMapping("/articulo/listar")
 	public ModelAndView listarCategoria(){
 		return new ModelAndView(LISTAR_VIEW) ;
 	}
 	
-	@RequestMapping(value = "/categoria/agregar", method = RequestMethod.GET)
+	@RequestMapping(value = "/articulo/agregar", method = RequestMethod.GET)
 	public ModelAndView agregarCategoriaGet(){
 		CategoriaForm form = new CategoriaForm(FormAcciones.AGREGAR, new Categoria());
 		return new ModelAndView(FORM_VIEW, "form", form) ;
 	}
 	
-	@RequestMapping(value = "/categoria/agregar", method = RequestMethod.POST)
+	@RequestMapping(value = "/articulo/agregar", method = RequestMethod.POST)
 	public ModelAndView agregarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
 		//String successView = this.procesarAccion(command, result);
 		this.categoriaValidator.validate(form, result); //validates the form
@@ -69,18 +69,18 @@ public class ArticuloController {
 		return new ModelAndView(FORM_VIEW, "form", form);
 	}
 	
-	@RequestMapping(value = "/categoria/mostrar", method = RequestMethod.GET)
+	@RequestMapping(value = "/articulo/mostrar", method = RequestMethod.GET)
 	public ModelAndView mostarCategoriaGet(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
 		return getFormCargado(categoriaIdStr, FormAcciones.MOSTRAR);	
 	}
 	
-	@RequestMapping(value = "/categoria/actualizar", method = RequestMethod.GET)
+	@RequestMapping(value = "/articulo/actualizar", method = RequestMethod.GET)
 	public ModelAndView actualizarCategoriaGet(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
 		return getFormCargado(categoriaIdStr, FormAcciones.ACTUALIZAR);	
 	}
 	
 	//TODO extaer metodo del post y usar la accion del from para determinar el metodo que se va a usar del service.
-	@RequestMapping(value = "/categoria/actualizar", method = RequestMethod.POST)
+	@RequestMapping(value = "/articulo/actualizar", method = RequestMethod.POST)
 	public String actualizarCategoriaPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") CategoriaForm form, BindingResult result) throws Exception {
 		this.categoriaValidator.validate(form, result); //validates the form
 		if (!result.hasErrors()) {
@@ -98,7 +98,7 @@ public class ArticuloController {
 		return FORM_VIEW;
 	}
 	
-	@RequestMapping(value = "/categoria/eliminar", method = RequestMethod.GET)
+	@RequestMapping(value = "/articulo/eliminar", method = RequestMethod.GET)
 	public ModelAndView eliminarCategoria (HttpServletRequest request, HttpServletResponse response,  @ModelAttribute("form") CategoriaForm form, @RequestParam(value = "categoriaId", required=true)String categoriaIdStr){
 		String mensaje = "";
 		try {
