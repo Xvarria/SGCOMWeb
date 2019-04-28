@@ -36,7 +36,7 @@ public class CategoriaDAOImpl extends AbstractDAO implements CategoriaDAO {
 
 	//Importante en Hibernate 5 se requiere la dependencia para 
 	//hibernate-jpamodelgen y su respectivo plugin en el POM
-	//Para Eliminar errorer de IDE se requiere en las opciones de "Compiler" permitir 
+	//Para Eliminar errores de IDE se requiere en las opciones de "Compiler" permitir 
 	//procesamiento de annotaciones y agregar la opcion target/metamodel
 	//https://docs.jboss.org/hibernate/orm/5.0/topical/html/metamodelgen/MetamodelGenerator.html
 	@Override
